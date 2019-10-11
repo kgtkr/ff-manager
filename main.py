@@ -39,8 +39,13 @@ followers = set(
 
 targets = friends-followers-list_members
 
+all_count = len(targets)
+cur_count = 0
+
 for xs in list_split(100, list(targets)):
     for x in api.lookup_users(user_ids=xs):
+        cur_count += 1
+        print(str(cur_count)+"/"+str(all_count))
         print(x.name)
         print("@"+x.screen_name)
         print("https://twitter.com/"+x.screen_name)
